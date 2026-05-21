@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Australia's Silent Extinction</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --bg-base:        #0d0f1a;
+      --bg-section:     #13162a;
+      --bg-card:        #1a1e35;
+      --bg-card-hover:  #1f2440;
+      --border:         rgba(255,255,255,0.07);
+      --border-accent:  rgba(230,99,70,0.4);
+
+      --red:            #e63946;
+      --orange:         #f4a261;
+      --yellow:         #e9c46a;
+      --teal:           #2a9d8f;
+      --blue:           #457b9d;
+      --text-primary:   #f0ece4;
+      --text-secondary: #9a96a0;
+      --text-muted:     #5a5870;
+
+      --font-display:   'Playfair Display', Georgia, serif;
+      --font-body:      'DM Sans', system-ui, sans-serif;
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--bg-base);
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      max-width: 750px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero-intro {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* ── Stat Cards ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 700px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--red);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-number.red    { color: var(--red); }
+    .stat-number.orange { color: var(--orange); }
+    .stat-number.yellow { color: var(--yellow); }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* ── Section ── */
+    .section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 0.975rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    /* ── Chart Grid Layouts ── */
+    .chart-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .chart-grid-3-2 {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 1.25rem;
+    }
+
+    /* ── Chart Card ── */
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .chart-card:hover { border-color: rgba(255,255,255,0.15); }
+
+    .chart-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .chart-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .chart-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .chart-placeholder {
+      background: var(--bg-section);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .chart-source {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      text-align: right;
+    }
+
+    /* ── Divider ── */
+    .act-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .act-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .act-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: rgba(230,57,70,0.1);
+      border: 1px solid rgba(230,57,70,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── Pull Quote ── */
+    .pull-quote {
+      border-left: 3px solid var(--orange);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(244,162,97,0.05);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .pull-quote p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .pull-quote cite {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .footer-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer-text a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+
+    .footer-text a:hover { color: var(--text-primary); }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .stat-grid        { grid-template-columns: 1fr; }
+      .chart-grid-2     { grid-template-columns: 1fr; }
+      .chart-grid-3-2   { grid-template-columns: 1fr; }
+      .footer-grid      { grid-template-columns: 1fr; }
+      .hero-title       { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">FIT2179 Data Visualisation 2 &nbsp;·&nbsp; Australia's Biodiversity Crisis</p>
+    <h1 class="hero-title">Australia's <em>Silent</em> Extinction</h1>
+    <p class="hero-intro">
+      Australia is home to some of the most unique wildlife on Earth — found nowhere else.
+      Yet today, more than 2,000 species are threatened with extinction, and populations have
+      declined by an average of 73% since 1985. This is the story of a crisis unfolding quietly,
+      species by species, state by state.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number red">2,208</div>
+        <div class="stat-label">species currently threatened under the EPBC Act</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number orange">73%</div>
+        <div class="stat-label">average population decline since 1985</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number yellow">102</div>
+        <div class="stat-label">species already extinct since European settlement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     ACT 1 — HOW BAD IS IT?
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="act-divider">
+      <span class="act-tag">Act 1 — The Scale</span>
+    </div>
+    <p class="section-label">How bad is it?</p>
+    <h2 class="section-title">Australia leads the world in mammal extinctions</h2>
+    <p class="section-intro">
+      Since European settlement in 1788, Australia has lost more mammal species than any other
+      country on Earth. The threatened species list has grown 54% in just 25 years —
+      and the most severe category has grown 33-fold.
+    </p>
+
+    <div class="chart-grid-2">
+      <div class="chart-card">
+        <div class="chart-title">One in ten Australian mammals is already gone</div>
+        <div class="chart-subtitle">Each square represents 1% of all known Australian mammal species · shaded = extinct</div>
+        <div class="chart-placeholder" id="chart1">Chart 1 — Waffle chart loading...</div>
+        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Plants make up 3 in every 4 threatened species</div>
+        <div class="chart-subtitle">Share of all 2,208 EPBC-listed species by taxonomic group</div>
+        <div class="chart-placeholder" id="chart2">Chart 2 — Donut chart loading...</div>
+        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     ACT 2 — WHERE IS IT WORST?
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="act-divider">
+      <span class="act-tag">Act 2 — The Geography</span>
+    </div>
+    <p class="section-label">Where is it worst?</p>
+    <h2 class="section-title">Western Australia carries the heaviest burden</h2>
+    <p class="section-intro">
+      Threatened species are not spread evenly across Australia. Western Australia's unique
+      and ancient flora makes it a global biodiversity hotspot — and a crisis zone.
+      Click any state to explore its threatened species breakdown.
+    </p>
+
+    <div class="chart-grid-3-2">
+      <div class="chart-card">
+        <div class="chart-title">Threatened species by state and territory</div>
+        <div class="chart-subtitle">Total EPBC-listed species occurring in each state · click to filter</div>
+        <div class="chart-placeholder" id="chart3" style="height:380px;">Chart 3 — Choropleth map loading...</div>
+        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026 · GeoJSON: rowanhogan/australian-states</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Threat severity varies by state</div>
+        <div class="chart-subtitle">Species count stacked by threat status · updates on map selection</div>
+        <div class="chart-placeholder" id="chart4" style="height:380px;">Chart 4 — Stacked bar loading...</div>
+        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-top: 1.25rem;">
+      <div class="chart-title">Which animals are most threatened — and where</div>
+      <div class="chart-subtitle">Each cell shows the number of species in that taxa group threatened in that state · darker = more threatened</div>
+      <div class="chart-placeholder" id="chart5" style="height:280px;">Chart 5 — Heatmap loading...</div>
+      <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     ACT 3 — WHO IS MOST AT RISK?
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="act-divider">
+      <span class="act-tag">Act 3 — The Species</span>
+    </div>
+    <p class="section-label">Who is most at risk?</p>
+    <h2 class="section-title">The species we are losing — one by one</h2>
+    <p class="section-intro">
+      Behind every statistic is a living species with a name. From the Regent Honeyeater
+      to the Northern Hairy-nosed Wombat, Australia's most iconic animals are disappearing
+      faster than most people realise.
+    </p>
+
+    <div class="chart-grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Threatened species by taxonomic group</div>
+        <div class="chart-subtitle">Rectangle size = number of species · colour = threat severity</div>
+        <div class="chart-placeholder" id="chart6">Chart 6 — Treemap loading...</div>
+        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">The species declining fastest</div>
+        <div class="chart-subtitle">Top 15 threatened species by steepest population decline since 1985</div>
+        <div class="chart-placeholder" id="chart7">Chart 7 — Ranked bar loading...</div>
+        <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     ACT 4 — IS IT GETTING WORSE?
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="act-divider">
+      <span class="act-tag">Act 4 — The Trend</span>
+    </div>
+    <p class="section-label">Is it getting worse?</p>
+    <h2 class="section-title">Populations have been collapsing for four decades</h2>
+    <p class="section-intro">
+      Since 1985, monitored populations of threatened birds, mammals and plants have declined
+      sharply and consistently. The 2017–2019 drought accelerated losses across the board.
+      There is no sign of recovery at a national scale.
+    </p>
+
+    <div class="chart-card" style="margin-bottom: 1.25rem;">
+      <div class="chart-title">Threatened species populations have fallen 73% since 1985</div>
+      <div class="chart-subtitle">Population index for birds, mammals and plants (1985 = 100) · shaded band marks the 2017–2019 drought period</div>
+      <div class="chart-placeholder" id="chart8" style="height:360px;">Chart 8 — Annotated line chart loading...</div>
+      <p class="chart-source">Source: TERN Threatened Species Index 2024 (data to 2021)</p>
+    </div>
+
+    <div class="chart-grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Conservation works — but only where it's funded</div>
+        <div class="chart-subtitle">Population change at managed vs unmanaged sites · 1985 to 2021</div>
+        <div class="chart-placeholder" id="chart9">Chart 9 — Slope chart loading...</div>
+        <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">The threatened species list keeps growing</div>
+        <div class="chart-subtitle">Total EPBC listings 2000–2025 stacked by threat category</div>
+        <div class="chart-placeholder" id="chart10">Chart 10 — Stacked area loading...</div>
+        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Australia is losing more biodiversity than any other developed nation. Threatened bird,
+      mammal and plant populations have, on average, halved or worse since 1985."</p>
+      <cite>— Prof. Brendan Wintle, Biodiversity Council of Australia</cite>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     ACT 5 — THE MONITORING GAP
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="act-divider">
+      <span class="act-tag">Act 5 — The Gap</span>
+    </div>
+    <p class="section-label">Where are we not looking?</p>
+    <h2 class="section-title">Most of Australia's interior goes unwatched</h2>
+    <p class="section-intro">
+      We can only measure what we monitor. Thousands of survey sites track threatened species
+      across Australia — but they cluster heavily along the eastern coast. Vast stretches of
+      the interior have almost no monitoring at all.
+    </p>
+
+    <div class="chart-grid-2">
+      <div class="chart-card">
+        <div class="chart-title">Where threatened species are being monitored</div>
+        <div class="chart-subtitle">Each dot = one monitoring site · colour = taxonomic group · remote regions have almost no coverage</div>
+        <div class="chart-placeholder" id="chart11" style="height:380px;">Chart 11 — Symbol map loading...</div>
+        <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Population trends differ dramatically by state</div>
+        <div class="chart-subtitle">Average population index per state · 1985–2021 · same scale for comparison</div>
+        <div class="chart-placeholder" id="chart12" style="height:380px;">Chart 12 — Small multiples loading...</div>
+        <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-title">Australia's Silent Extinction</p>
+        <p class="footer-text">
+          A data visualisation exploring Australia's threatened species crisis,
+          built for FIT2179 Data Visualisation 2 at Monash University.
+          Created by Rachel Robin Fernandes · May 2026.
+        </p>
+      </div>
+      <div>
+        <p class="footer-title">Data Sources</p>
+        <p class="footer-text">
+          <a href="https://data.gov.au/data/dataset/threatened-species-state-lists" target="_blank">
+            DCCEEW — EPBC Act Threatened Species List (Feb 2026)
+          </a><br><br>
+          <a href="https://tsx.org.au/tsx2025" target="_blank">
+            TERN — Threatened Species Index 2024
+          </a><br><br>
+          <a href="https://github.com/rowanhogan/australian-states" target="_blank">
+            rowanhogan — Australian States GeoJSON
+          </a>
+        </p>
+      </div>
+      <div>
+        <p class="footer-title">About</p>
+        <p class="footer-text">
+          <a href="https://github.com/rach-cyber/Threatened-species-crisis" target="_blank">
+            View on GitHub
+          </a><br><br>
+          AI tools used: Claude (Anthropic) for code assistance, data cleaning guidance,
+          and grammar checking. All visualisations and analysis are original work.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Rachel Robin Fernandes · Monash University FIT2179</p>
+      <p>Data: CC BY 3.0 AU (DCCEEW) · CC BY 4.0 (TERN)</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Vega-Lite charts will be embedded here as we build them
+  // Each will follow this pattern:
+  // vegaEmbed('#chart1', 'charts/chart1.json', { actions: false, renderer: 'svg' }).catch(console.error);
+</script>
+
+</body>
+</html>

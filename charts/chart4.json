@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 340,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "gridColor": "rgba(255,255,255,0.05)",
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)",
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 11
+    },
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans"
+    }
+  },
+  "data": {"url": "data/epbc_by_state_status.csv"},
+  "mark": {"type": "bar", "cornerRadiusTopLeft": 2, "cornerRadiusTopRight": 2},
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State / Territory",
+      "sort": ["-y"],
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of species",
+      "stack": "zero"
+    },
+    "color": {
+      "field": "status",
+      "type": "nominal",
+      "title": "Threat status",
+      "scale": {
+        "domain": ["Critically Endangered", "Endangered", "Vulnerable", "Extinct"],
+        "range": ["#e63946", "#f4a261", "#e9c46a", "#5a5870"]
+      }
+    },
+    "order": {
+      "field": "status",
+      "sort": ["Critically Endangered", "Endangered", "Vulnerable", "Extinct"]
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "status", "type": "nominal", "title": "Status"},
+      {"field": "count", "type": "quantitative", "title": "Species count"}
+    ]
+  }
+}

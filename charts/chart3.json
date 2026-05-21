@@ -22,14 +22,10 @@
     }
   ],
   "projection": {
-    "type": "equirectangular",
-    "fit": {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[112, -10], [154, -10], [154, -44], [112, -44], [112, -10]]]
-      }
-    }
+    "type": "mercator",
+    "center": [136, -26.4],
+    "scale": 580,
+    "translate": [500, 290]
   },
   "mark": {
     "type": "geoshape",

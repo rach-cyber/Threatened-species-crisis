@@ -24,13 +24,13 @@
   "projection": {
     "type": "mercator",
     "center": [133.5, -27],
-    "scale": 314,
-    "translate": [250, 200]
+    "scale": 260,
+    "translate": [370, 195]
   },
   "mark": {
     "type": "geoshape",
-    "stroke": "#0d0f1a",
-    "strokeWidth": 1.5
+    "stroke": "#2a2d45",
+    "strokeWidth": 1
   },
   "encoding": {
     "color": {

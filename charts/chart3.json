@@ -23,9 +23,9 @@
   ],
   "projection": {
     "type": "mercator",
-    "center": [136, -26.4],
-    "scale": 580,
-    "translate": [500, 290]
+    "center": [136.0, -26.5],
+    "scale": 527,
+    "translate": [250, 200]
   },
   "mark": {
     "type": "geoshape",

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
-  "height": 420,
+  "width": 500,
+  "height": 400,
   "config": {
     "background": "#1a1e35",
     "font": "DM Sans",
@@ -21,7 +21,11 @@
       }
     }
   ],
-  "projection": {"type": "mercator"},
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 700
+  },
   "mark": {
     "type": "geoshape",
     "stroke": "#0d0f1a",

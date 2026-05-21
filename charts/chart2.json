@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 280,
+  "height": 280,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 11
+    }
+  },
+  "data": {"url": "data/epbc_by_taxa.csv"},
+  "mark": {
+    "type": "arc",
+    "innerRadius": 80,
+    "outerRadius": 130,
+    "padAngle": 0.02,
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "theta": {
+      "field": "count",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "taxa",
+      "type": "nominal",
+      "title": "Taxa group",
+      "scale": {
+        "domain": ["Plants", "Birds", "Mammals", "Invertebrates", "Reptiles", "Fish", "Frogs"],
+        "range": ["#2a9d8f", "#e9c46a", "#f4a261", "#e63946", "#457b9d", "#264653", "#a8dadc"]
+      },
+      "legend": {
+        "orient": "right",
+        "labelFontSize": 11,
+        "symbolSize": 120
+      }
+    },
+    "tooltip": [
+      {"field": "taxa", "type": "nominal", "title": "Group"},
+      {"field": "count", "type": "quantitative", "title": "Species"},
+      {"field": "percentage", "type": "quantitative", "title": "Share (%)", "format": ".1f"}
+    ]
+  }
+}

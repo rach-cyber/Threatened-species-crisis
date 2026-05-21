@@ -1,0 +1,33 @@
+state,status,count
+ACT,Critically Endangered,11
+ACT,Endangered,27
+ACT,Vulnerable,33
+ACT,Extinct,0
+NSW,Critically Endangered,152
+NSW,Endangered,285
+NSW,Vulnerable,284
+NSW,Extinct,33
+NT,Critically Endangered,14
+NT,Endangered,50
+NT,Vulnerable,78
+NT,Extinct,12
+QLD,Critically Endangered,86
+QLD,Endangered,199
+QLD,Vulnerable,290
+QLD,Extinct,33
+SA,Critically Endangered,31
+SA,Endangered,116
+SA,Vulnerable,146
+SA,Extinct,23
+TAS,Critically Endangered,48
+TAS,Endangered,77
+TAS,Vulnerable,89
+TAS,Extinct,10
+VIC,Critically Endangered,50
+VIC,Endangered,129
+VIC,Vulnerable,161
+VIC,Extinct,13
+WA,Critically Endangered,106
+WA,Endangered,276
+WA,Vulnerable,197
+WA,Extinct,31

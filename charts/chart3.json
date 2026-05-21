@@ -23,8 +23,8 @@
   ],
   "projection": {
     "type": "mercator",
-    "center": [134, -28],
-    "scale": 400
+    "center": [132, -28],
+    "scale": 220
   },
   "mark": {
     "type": "geoshape",

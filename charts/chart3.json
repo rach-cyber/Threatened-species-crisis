@@ -7,57 +7,53 @@
     "font": "DM Sans",
     "view": {"stroke": null}
   },
-  "layer": [
+  "data": {
+    "url": "data/aus_states.json",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
-        "format": {"type": "topojson", "feature": "states"}
-      },
-      "mark": {
-        "type": "geoshape",
-        "stroke": "#0d0f1a",
-        "strokeWidth": 1.5
-      },
-      "transform": [
-        {
-          "lookup": "properties.STATE_NAME",
-          "from": {
-            "data": {"url": "data/epbc_by_state.csv"},
-            "key": "state",
-            "fields": ["total", "endangered", "vulnerable", "critically_endangered", "extinct"]
-          }
-        }
-      ],
-      "encoding": {
-        "color": {
-          "field": "total",
-          "type": "quantitative",
-          "title": "Threatened species",
-          "scale": {
-            "scheme": "reds",
-            "domain": [0, 800]
-          },
-          "legend": {
-            "orient": "bottom-right",
-            "titleColor": "#9a96a0",
-            "labelColor": "#9a96a0",
-            "titleFont": "DM Sans",
-            "labelFont": "DM Sans",
-            "titleFontSize": 11,
-            "labelFontSize": 10,
-            "gradientLength": 120
-          }
-        },
-        "tooltip": [
-          {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
-          {"field": "total", "type": "quantitative", "title": "Total threatened"},
-          {"field": "critically_endangered", "type": "quantitative", "title": "Critically Endangered"},
-          {"field": "endangered", "type": "quantitative", "title": "Endangered"},
-          {"field": "vulnerable", "type": "quantitative", "title": "Vulnerable"},
-          {"field": "extinct", "type": "quantitative", "title": "Extinct"}
-        ]
-      },
-      "projection": {"type": "mercator"}
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {"url": "data/epbc_by_state.csv"},
+        "key": "state",
+        "fields": ["total", "endangered", "vulnerable", "critically_endangered", "extinct"]
+      }
     }
-  ]
+  ],
+  "projection": {"type": "mercator"},
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#0d0f1a",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "color": {
+      "field": "total",
+      "type": "quantitative",
+      "title": "Threatened species",
+      "scale": {
+        "scheme": "reds",
+        "domain": [0, 800]
+      },
+      "legend": {
+        "orient": "bottom-right",
+        "titleColor": "#9a96a0",
+        "labelColor": "#9a96a0",
+        "titleFont": "DM Sans",
+        "labelFont": "DM Sans",
+        "titleFontSize": 11,
+        "labelFontSize": 10,
+        "gradientLength": 120
+      }
+    },
+    "tooltip": [
+      {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+      {"field": "total", "type": "quantitative", "title": "Total threatened"},
+      {"field": "critically_endangered", "type": "quantitative", "title": "Critically Endangered"},
+      {"field": "endangered", "type": "quantitative", "title": "Endangered"},
+      {"field": "vulnerable", "type": "quantitative", "title": "Vulnerable"},
+      {"field": "extinct", "type": "quantitative", "title": "Extinct"}
+    ]
+  }
 }

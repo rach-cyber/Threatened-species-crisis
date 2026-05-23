@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 260,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "rgba(255,255,255,0.03)",
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)"
+    },
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "titleFontSize": 10
+    }
+  },
+  "data": {"url": "data/epbc_heatmap.csv"},
+  "mark": {"type": "rect", "cornerRadius": 2},
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State / Territory",
+      "sort": ["NSW", "WA", "QLD", "VIC", "SA", "TAS", "NT", "ACT"],
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "taxa",
+      "type": "nominal",
+      "title": null,
+      "sort": ["Plants", "Birds", "Mammals", "Invertebrates", "Reptiles", "Fish", "Frogs"]
+    },
+    "color": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Species count",
+      "scale": {
+        "scheme": "reds",
+        "domain": [0, 500]
+      },
+      "legend": {
+        "orient": "right",
+        "gradientLength": 120
+      }
+    },
+    "tooltip": [
+      {"field": "taxa", "type": "nominal", "title": "Taxa group"},
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "count", "type": "quantitative", "title": "Threatened species"}
+    ]
+  }
+}

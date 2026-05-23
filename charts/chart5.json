@@ -47,8 +47,9 @@
       "type": "quantitative",
       "title": "Species count",
       "scale": {
+        "type": "log",
         "scheme": "reds",
-        "domain": [0, 500]
+        "domain": [1, 500]
       },
       "legend": {
         "orient": "right",

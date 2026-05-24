@@ -18,14 +18,10 @@
   "data": {"url": "data/epbc_treemap.csv"},
   "layer": [
     {
-      "mark": {
-        "type": "rect",
-        "stroke": "#1a1e35",
-        "strokeWidth": 2
-      },
+      "mark": {"type": "rect", "stroke": "#1a1e35", "strokeWidth": 2},
       "encoding": {
-        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 600]}},
-        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 350]}},
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 400]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
         "x2": {"field": "x2"},
         "y2": {"field": "y2"},
         "color": {
@@ -55,27 +51,15 @@
         "align": "center",
         "baseline": "middle",
         "font": "DM Sans",
-        "fontWeight": "500"
+        "fontWeight": "500",
+        "color": "#0d0f1a",
+        "fontSize": 15
       },
-      "transform": [
-        {"filter": "datum.taxa == 'Plants'"}
-      ],
+      "transform": [{"filter": "datum.taxa == 'Plants'"}],
       "encoding": {
-        "x": {
-          "expr": "(datum.x + datum.x2) / 2",
-          "type": "quantitative",
-          "axis": null,
-          "scale": {"domain": [0, 600]}
-        },
-        "y": {
-          "expr": "(datum.y + datum.y2) / 2",
-          "type": "quantitative",
-          "axis": null,
-          "scale": {"domain": [0, 350]}
-        },
-        "text": {"value": "Plants"},
-        "color": {"value": "#0d0f1a"},
-        "size": {"value": 16}
+        "x": {"value": 137},
+        "y": {"value": 150},
+        "text": {"value": "Plants"}
       }
     },
     {
@@ -84,28 +68,18 @@
         "align": "center",
         "baseline": "middle",
         "font": "DM Sans",
-        "fontWeight": "500"
+        "fontWeight": "500",
+        "color": "#0d0f1a",
+        "fontSize": 10
       },
       "transform": [
         {"filter": "datum.taxa != 'Plants'"},
-        {"filter": "(datum.y2 - datum.y) > 25"}
+        {"filter": "(datum.y2 - datum.y) > 30"}
       ],
       "encoding": {
-        "x": {
-          "expr": "(datum.x + datum.x2) / 2",
-          "type": "quantitative",
-          "axis": null,
-          "scale": {"domain": [0, 600]}
-        },
-        "y": {
-          "expr": "(datum.y + datum.y2) / 2",
-          "type": "quantitative",
-          "axis": null,
-          "scale": {"domain": [0, 350]}
-        },
-        "text": {"field": "taxa", "type": "nominal"},
-        "color": {"value": "#0d0f1a"},
-        "size": {"value": 11}
+        "x": {"value": 338},
+        "y": {"expr": "(datum.y + datum.y2) / 2", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "text": {"field": "taxa", "type": "nominal"}
       }
     }
   ]

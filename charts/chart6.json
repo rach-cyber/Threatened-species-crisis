@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400,
-  "height": 300,
+  "width": 300,
+  "height": 220,
   "config": {
     "background": "#1a1e35",
     "font": "DM Sans",
@@ -20,8 +20,8 @@
     {
       "mark": {"type": "rect", "stroke": "#1a1e35", "strokeWidth": 2},
       "encoding": {
-        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 400]}},
-        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 220]}},
         "x2": {"field": "x2"},
         "y2": {"field": "y2"},
         "color": {
@@ -53,12 +53,12 @@
         "font": "DM Sans",
         "fontWeight": "500",
         "color": "#0d0f1a",
-        "fontSize": 15
+        "fontSize": 13
       },
       "transform": [{"filter": "datum.taxa == 'Plants'"}],
       "encoding": {
-        "x": {"value": 137},
-        "y": {"value": 150},
+        "x": {"value": 102},
+        "y": {"value": 110},
         "text": {"value": "Plants"}
       }
     },
@@ -70,15 +70,20 @@
         "font": "DM Sans",
         "fontWeight": "500",
         "color": "#0d0f1a",
-        "fontSize": 10
+        "fontSize": 9
       },
       "transform": [
         {"filter": "datum.taxa != 'Plants'"},
-        {"filter": "(datum.y2 - datum.y) > 30"}
+        {"filter": "(datum.y2 - datum.y) > 25"}
       ],
       "encoding": {
-        "x": {"value": 338},
-        "y": {"expr": "(datum.y + datum.y2) / 2", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "x": {"value": 253},
+        "y": {
+          "expr": "(datum.y + datum.y2) / 2",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {"domain": [0, 220]}
+        },
         "text": {"field": "taxa", "type": "nominal"}
       }
     }

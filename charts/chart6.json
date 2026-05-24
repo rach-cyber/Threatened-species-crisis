@@ -1,84 +1,77 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
+  "width": 600,
   "height": 350,
   "config": {
     "background": "#1a1e35",
     "font": "DM Sans",
-    "view": {"stroke": null},
-    "axis": {
-      "labelColor": "#9a96a0",
-      "titleColor": "#9a96a0",
-      "labelFont": "DM Sans",
-      "titleFont": "DM Sans",
-      "labelFontSize": 10,
-      "titleFontSize": 11,
-      "domainColor": "rgba(255,255,255,0.1)",
-      "tickColor": "rgba(255,255,255,0.1)",
-      "gridColor": "rgba(255,255,255,0.05)"
-    },
-    "legend": {
-      "labelColor": "#9a96a0",
-      "titleColor": "#9a96a0",
-      "labelFont": "DM Sans",
-      "titleFont": "DM Sans",
-      "labelFontSize": 10,
-      "titleFontSize": 10
-    }
+    "view": {"stroke": null}
   },
-  "data": {"url": "data/epbc_species_detail.csv"},
-  "params": [
+  "data": {"url": "data/epbc_treemap.csv"},
+  "layer": [
     {
-      "name": "taxaFilter",
-      "value": "Mammals",
-      "bind": {
-        "input": "select",
-        "options": ["Mammals", "Birds", "Reptiles", "Frogs", "Fish", "Invertebrates"],
-        "labels": ["Mammals", "Birds", "Reptiles", "Frogs", "Fish", "Invertebrates"],
-        "name": "Select group: "
-      }
-    }
-  ],
-  "transform": [
-    {"filter": "datum.taxa == taxaFilter"},
-    {"filter": "datum.state_count > 0"},
-    {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "state_count", "order": "descending"}]
-    },
-    {"filter": "datum.rank <= 20"}
-  ],
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 3
-  },
-  "encoding": {
-    "y": {
-      "field": "name",
-      "type": "nominal",
-      "title": null,
-      "sort": {"field": "state_count", "order": "descending"},
-      "axis": {"labelLimit": 200}
-    },
-    "x": {
-      "field": "state_count",
-      "type": "quantitative",
-      "title": "Number of states / territories",
-      "scale": {"domain": [0, 8]}
-    },
-    "color": {
-      "field": "status",
-      "type": "nominal",
-      "title": "Threat status",
-      "scale": {
-        "domain": ["Critically Endangered", "Endangered", "Vulnerable", "Extinct"],
-        "range": ["#e63946", "#f4a261", "#e9c46a", "#5a5870"]
+      "mark": {
+        "type": "rect",
+        "stroke": "#1a1e35",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 600]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 350]}},
+        "x2": {"field": "x2"},
+        "y2": {"field": "y2"},
+        "color": {
+          "field": "taxa",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Plants", "Birds", "Mammals", "Invertebrates", "Reptiles", "Fish", "Frogs"],
+            "range": ["#2a9d8f", "#e9c46a", "#f4a261", "#e63946", "#457b9d", "#264653", "#a8dadc"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "columns": 4,
+            "labelColor": "#9a96a0",
+            "titleColor": "#9a96a0",
+            "labelFont": "DM Sans",
+            "titleFont": "DM Sans",
+            "labelFontSize": 10,
+            "title": null
+          }
+        },
+        "tooltip": [
+          {"field": "taxa", "type": "nominal", "title": "Group"},
+          {"field": "count", "type": "quantitative", "title": "Species"},
+          {"field": "percentage", "type": "quantitative", "title": "Share (%)", "format": ".1f"}
+        ]
       }
     },
-    "tooltip": [
-      {"field": "name", "type": "nominal", "title": "Species"},
-      {"field": "status", "type": "nominal", "title": "Status"},
-      {"field": "state_count", "type": "quantitative", "title": "States"}
-    ]
-  }
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "font": "DM Sans",
+        "fontWeight": "500"
+      },
+      "encoding": {
+        "x": {
+          "expr": "(datum.x + datum.x2) / 2",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {"domain": [0, 600]}
+        },
+        "y": {
+          "expr": "(datum.y + datum.y2) / 2",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {"domain": [0, 350]}
+        },
+        "text": {"field": "taxa", "type": "nominal"},
+        "color": {"value": "#1a1e35"},
+        "size": {
+          "expr": "datum.taxa === 'Plants' ? 18 : datum.taxa === 'Birds' || datum.taxa === 'Mammals' ? 13 : 10"
+        }
+      }
+    }
+  ]
 }

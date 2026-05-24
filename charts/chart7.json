@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 300,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "titleFontSize": 11,
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)",
+      "gridColor": "rgba(255,255,255,0.05)"
+    },
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "titleFontSize": 10
+    }
+  },
+  "data": {"url": "data/tsx_top15_decline.csv"},
+  "mark": {"type": "bar", "cornerRadiusEnd": 3},
+  "encoding": {
+    "y": {
+      "field": "name",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "pct_change", "order": "ascending"},
+      "axis": {"labelLimit": 180, "labelFontSize": 10}
+    },
+    "x": {
+      "field": "pct_change",
+      "type": "quantitative",
+      "title": "Population change (%)",
+      "scale": {"domain": [-105, 0]}
+    },
+    "color": {
+      "field": "status",
+      "type": "nominal",
+      "title": "Threat status",
+      "scale": {
+        "domain": ["Critically Endangered", "Endangered", "Vulnerable"],
+        "range": ["#e63946", "#f4a261", "#e9c46a"]
+      }
+    },
+    "tooltip": [
+      {"field": "name", "type": "nominal", "title": "Species"},
+      {"field": "taxa", "type": "nominal", "title": "Group"},
+      {"field": "status", "type": "nominal", "title": "Status"},
+      {"field": "pct_change", "type": "quantitative", "title": "Population change (%)", "format": ".1f"},
+      {"field": "period", "type": "nominal", "title": "Period"},
+      {"field": "n_sites", "type": "quantitative", "title": "Monitoring sites"}
+    ]
+  }
+}

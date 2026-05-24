@@ -502,6 +502,12 @@
         <div class="chart-placeholder" id="chart7">Chart 7 — Ranked bar loading...</div>
         <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
       </div>
+      <div class="chart-card" style="margin-top: 1.25rem;">
+       <div class="chart-title">Explore threatened species by group</div>
+       <div class="chart-subtitle">Top 20 species per group by geographic spread · select a group to explore · colour = threat status</div>
+       <div id="chart6b"></div>
+       <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+</div>
     </div>
   </div>
 </section>
@@ -641,6 +647,7 @@
   vegaEmbed('#chart4', 'charts/chart4.json', { actions: false, renderer: 'svg' }).catch(console.error);
   vegaEmbed('#chart5', 'charts/chart5.json', { actions: false, renderer: 'svg' }).catch(console.error);
   vegaEmbed('#chart6', 'charts/chart6.json', { actions: false, renderer: 'svg' }).catch(console.error);
+  vegaEmbed('#chart6b', 'charts/chart6b.json', { actions: false, renderer: 'svg' }).catch(console.error);
 </script>
 
 

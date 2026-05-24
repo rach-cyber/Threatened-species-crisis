@@ -1,11 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
-  "height": 350,
+  "width": 400,
+  "height": 300,
   "config": {
     "background": "#1a1e35",
     "font": "DM Sans",
-    "view": {"stroke": null}
+    "view": {"stroke": null},
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "title": null
+    }
   },
   "data": {"url": "data/epbc_treemap.csv"},
   "layer": [
@@ -30,12 +38,8 @@
           "legend": {
             "orient": "bottom",
             "columns": 4,
-            "labelColor": "#9a96a0",
-            "titleColor": "#9a96a0",
-            "labelFont": "DM Sans",
-            "titleFont": "DM Sans",
             "labelFontSize": 10,
-            "title": null
+            "symbolSize": 80
           }
         },
         "tooltip": [
@@ -53,6 +57,39 @@
         "font": "DM Sans",
         "fontWeight": "500"
       },
+      "transform": [
+        {"filter": "datum.taxa == 'Plants'"}
+      ],
+      "encoding": {
+        "x": {
+          "expr": "(datum.x + datum.x2) / 2",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {"domain": [0, 600]}
+        },
+        "y": {
+          "expr": "(datum.y + datum.y2) / 2",
+          "type": "quantitative",
+          "axis": null,
+          "scale": {"domain": [0, 350]}
+        },
+        "text": {"value": "Plants"},
+        "color": {"value": "#0d0f1a"},
+        "size": {"value": 16}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "font": "DM Sans",
+        "fontWeight": "500"
+      },
+      "transform": [
+        {"filter": "datum.taxa != 'Plants'"},
+        {"filter": "(datum.y2 - datum.y) > 25"}
+      ],
       "encoding": {
         "x": {
           "expr": "(datum.x + datum.x2) / 2",
@@ -67,10 +104,8 @@
           "scale": {"domain": [0, 350]}
         },
         "text": {"field": "taxa", "type": "nominal"},
-        "color": {"value": "#1a1e35"},
-        "size": {
-          "expr": "datum.taxa === 'Plants' ? 18 : datum.taxa === 'Birds' || datum.taxa === 'Mammals' ? 13 : 10"
-        }
+        "color": {"value": "#0d0f1a"},
+        "size": {"value": 11}
       }
     }
   ]

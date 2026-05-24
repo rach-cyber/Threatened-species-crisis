@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 420,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)",
+      "gridColor": "rgba(255,255,255,0.05)"
+    },
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "titleFontSize": 10
+    }
+  },
+  "data": {"url": "data/epbc_species_detail.csv"},
+  "params": [
+    {
+      "name": "taxaFilter",
+      "value": "Mammals",
+      "bind": {
+        "input": "select",
+        "options": ["Mammals", "Birds", "Reptiles", "Frogs", "Fish", "Invertebrates"],
+        "name": "Select group: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.taxa == taxaFilter"},
+    {"filter": "datum.state_count > 0"}
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "y": {
+      "field": "name",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "state_count", "order": "descending"},
+      "axis": {"labelLimit": 200, "labelFontSize": 11}
+    },
+    "x": {
+      "field": "state_count",
+      "type": "quantitative",
+      "title": "Number of states / territories",
+      "scale": {"domain": [0, 8]}
+    },
+    "color": {
+      "field": "status",
+      "type": "nominal",
+      "title": "Threat status",
+      "scale": {
+        "domain": ["Critically Endangered", "Endangered", "Vulnerable", "Extinct"],
+        "range": ["#e63946", "#f4a261", "#e9c46a", "#5a5870"]
+      }
+    },
+    "tooltip": [
+      {"field": "name", "type": "nominal", "title": "Species"},
+      {"field": "status", "type": "nominal", "title": "Status"},
+      {"field": "state_count", "type": "quantitative", "title": "States"}
+    ]
+  }
+}

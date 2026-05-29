@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 280,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)",
+      "gridColor": "rgba(255,255,255,0.04)"
+    },
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "titleFontSize": 10
+    }
+  },
+  "data": {"url": "data/tsx_monitoring_effort.csv"},
+  "mark": {"type": "area", "interpolate": "linear", "line": false},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "scale": {"domain": [1985, 2021], "zero": false},
+      "axis": {"format": "d", "tickCount": 8}
+    },
+    "y": {
+      "field": "populations",
+      "type": "quantitative",
+      "title": "Monitored populations",
+      "stack": "zero"
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "title": "Group",
+      "scale": {
+        "domain": ["Birds", "Mammals", "Plants", "Amphibians", "Reptiles"],
+        "range": ["#e9c46a", "#f4a261", "#2a9d8f", "#a8dadc", "#457b9d"]
+      },
+      "legend": {"orient": "top", "direction": "horizontal"}
+    },
+    "order": {"field": "populations", "type": "quantitative", "sort": "descending"},
+    "tooltip": [
+      {"field": "group", "type": "nominal", "title": "Group"},
+      {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
+      {"field": "populations", "type": "quantitative", "title": "Monitored populations"}
+    ]
+  }
+}

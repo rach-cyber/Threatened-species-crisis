@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 440,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "titleFontSize": 10
+    }
+  },
+  "projection": {"type": "mercator", "center": [134, -28], "scale": 560},
+  "layer": [
+    {
+      "data": {"url": "data/aus_states_clean.json", "format": {"type": "json", "property": "features"}},
+      "mark": {"type": "geoshape", "fill": "#13162a", "stroke": "#2a2d45", "strokeWidth": 1}
+    },
+    {
+      "data": {"url": "data/tsx_sites.csv"},
+      "mark": {"type": "circle", "opacity": 0.7, "stroke": "#0d0f1a", "strokeWidth": 0.3},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "n",
+          "type": "quantitative",
+          "title": "Populations at site",
+          "scale": {"range": [12, 260]},
+          "legend": {"orient": "bottom-left"}
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": "Group",
+          "scale": {
+            "domain": ["Birds", "Mammals", "Plants", "Amphibians", "Reptiles"],
+            "range": ["#e9c46a", "#f4a261", "#2a9d8f", "#a8dadc", "#457b9d"]
+          },
+          "legend": {"orient": "top-left", "symbolFillColor": "transparent"}
+        },
+        "tooltip": [
+          {"field": "group", "type": "nominal", "title": "Group"},
+          {"field": "n", "type": "quantitative", "title": "Monitored populations"},
+          {"field": "lat", "type": "quantitative", "title": "Latitude", "format": ".1f"},
+          {"field": "lon", "type": "quantitative", "title": "Longitude", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}

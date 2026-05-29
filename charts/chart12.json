@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 9,
+      "titleFontSize": 10,
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)",
+      "gridColor": "rgba(255,255,255,0.04)"
+    },
+    "header": {
+      "labelColor": "#f0ece4",
+      "labelFont": "DM Sans",
+      "labelFontSize": 11,
+      "labelFontWeight": "bold"
+    }
+  },
+  "data": {"url": "data/tsx_index_state.csv"},
+  "columns": 2,
+  "facet": {
+    "field": "state",
+    "type": "nominal",
+    "title": null,
+    "sort": ["New South Wales", "Western Australia", "Queensland", "Victoria", "South Australia", "Tasmania", "Northern Territory", "Australian Capital Territory"]
+  },
+  "spec": {
+    "width": 140,
+    "height": 85,
+    "layer": [
+      {
+        "data": {"values": [{"y": 100}]},
+        "mark": {"type": "rule", "stroke": "#5a5870", "strokeDash": [3, 3]},
+        "encoding": {"y": {"field": "y", "type": "quantitative"}}
+      },
+      {
+        "mark": {"type": "line", "color": "#f4a261", "strokeWidth": 1.8, "interpolate": "monotone"},
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "title": null,
+            "scale": {"domain": [1985, 2021], "zero": false},
+            "axis": {"format": "d", "tickCount": 3}
+          },
+          "y": {
+            "field": "index",
+            "type": "quantitative",
+            "title": "Index (1985=100)",
+            "scale": {"domain": [0, 180], "clamp": true}
+          },
+          "tooltip": [
+            {"field": "state", "type": "nominal", "title": "State"},
+            {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
+            {"field": "index", "type": "quantitative", "title": "Index", "format": ".0f"}
+          ]
+        }
+      }
+    ]
+  }
+}

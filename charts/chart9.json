@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 240,
+  "height": 300,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 11,
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)",
+      "grid": false
+    }
+  },
+  "data": {"url": "data/tsx_index_mgmt.csv"},
+  "transform": [
+    {"filter": "datum.year == 1985 || datum.year == 2021"},
+    {"calculate": "datum.category == 'Actively managed' ? 'Managed' : 'Unmanaged'", "as": "short"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelAngle": 0},
+      "scale": {"padding": 0.35}
+    },
+    "y": {
+      "field": "index",
+      "type": "quantitative",
+      "title": "Population index (1985 = 100)",
+      "scale": {"domain": [0, 110]}
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Actively managed", "No known management"],
+        "range": ["#2a9d8f", "#e63946"]
+      },
+      "legend": null
+    }
+  },
+  "layer": [
+    {"mark": {"type": "line", "strokeWidth": 2.5}},
+    {"mark": {"type": "point", "filled": true, "size": 70}},
+    {
+      "mark": {"type": "text", "fontWeight": "bold", "fontSize": 12, "dy": -12},
+      "encoding": {"text": {"field": "index", "type": "quantitative", "format": ".0f"}}
+    },
+    {
+      "transform": [{"filter": "datum.year == 2021"}],
+      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 11, "fontWeight": "bold"},
+      "encoding": {"text": {"field": "short", "type": "nominal"}}
+    }
+  ]
+}

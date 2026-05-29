@@ -1,0 +1,297 @@
+state,year,index
+Australian Capital Territory,1985,100.0
+Australian Capital Territory,1986,100.0
+Australian Capital Territory,1987,100.0
+Australian Capital Territory,1988,100.0
+Australian Capital Territory,1989,100.0
+Australian Capital Territory,1990,100.0
+Australian Capital Territory,1991,100.0
+Australian Capital Territory,1992,100.0
+Australian Capital Territory,1993,100.0
+Australian Capital Territory,1994,100.0
+Australian Capital Territory,1995,100.0
+Australian Capital Territory,1996,100.0
+Australian Capital Territory,1997,100.0
+Australian Capital Territory,1998,142.0
+Australian Capital Territory,1999,132.0
+Australian Capital Territory,2000,102.8
+Australian Capital Territory,2001,105.1
+Australian Capital Territory,2002,107.3
+Australian Capital Territory,2003,108.7
+Australian Capital Territory,2004,107.0
+Australian Capital Territory,2005,80.3
+Australian Capital Territory,2006,87.5
+Australian Capital Territory,2007,96.4
+Australian Capital Territory,2008,86.4
+Australian Capital Territory,2009,87.7
+Australian Capital Territory,2010,87.6
+Australian Capital Territory,2011,111.2
+Australian Capital Territory,2012,103.4
+Australian Capital Territory,2013,113.3
+Australian Capital Territory,2014,98.7
+Australian Capital Territory,2015,104.9
+Australian Capital Territory,2016,123.8
+Australian Capital Territory,2017,132.3
+Australian Capital Territory,2018,135.8
+Australian Capital Territory,2019,138.8
+Australian Capital Territory,2020,151.5
+Australian Capital Territory,2021,142.9
+New South Wales,1985,100.0
+New South Wales,1986,101.6
+New South Wales,1987,87.0
+New South Wales,1988,71.3
+New South Wales,1989,60.8
+New South Wales,1990,41.2
+New South Wales,1991,59.1
+New South Wales,1992,71.8
+New South Wales,1993,64.6
+New South Wales,1994,54.6
+New South Wales,1995,53.2
+New South Wales,1996,46.0
+New South Wales,1997,42.1
+New South Wales,1998,40.6
+New South Wales,1999,38.6
+New South Wales,2000,40.2
+New South Wales,2001,39.8
+New South Wales,2002,32.3
+New South Wales,2003,31.6
+New South Wales,2004,31.8
+New South Wales,2005,28.9
+New South Wales,2006,26.7
+New South Wales,2007,25.1
+New South Wales,2008,25.9
+New South Wales,2009,25.1
+New South Wales,2010,24.0
+New South Wales,2011,24.3
+New South Wales,2012,23.1
+New South Wales,2013,23.4
+New South Wales,2014,22.7
+New South Wales,2015,23.0
+New South Wales,2016,23.0
+New South Wales,2017,20.4
+New South Wales,2018,19.3
+New South Wales,2019,19.8
+New South Wales,2020,20.0
+New South Wales,2021,19.8
+Northern Territory,1985,100.0
+Northern Territory,1986,162.7
+Northern Territory,1987,179.4
+Northern Territory,1988,70.1
+Northern Territory,1989,314.9
+Northern Territory,1990,314.9
+Northern Territory,1991,314.9
+Northern Territory,1992,314.9
+Northern Territory,1993,314.9
+Northern Territory,1994,314.9
+Northern Territory,1995,763.5
+Northern Territory,1996,401.4
+Northern Territory,1997,329.9
+Northern Territory,1998,365.4
+Northern Territory,1999,134.3
+Northern Territory,2000,97.0
+Northern Territory,2001,127.9
+Northern Territory,2002,105.6
+Northern Territory,2003,130.0
+Northern Territory,2004,171.3
+Northern Territory,2005,117.1
+Northern Territory,2006,142.1
+Northern Territory,2007,159.5
+Northern Territory,2008,147.9
+Northern Territory,2009,146.5
+Northern Territory,2010,136.2
+Northern Territory,2011,117.7
+Northern Territory,2012,107.7
+Northern Territory,2013,111.9
+Northern Territory,2014,107.9
+Northern Territory,2015,126.7
+Northern Territory,2016,105.8
+Northern Territory,2017,105.6
+Northern Territory,2018,109.4
+Northern Territory,2019,119.5
+Northern Territory,2020,153.7
+Northern Territory,2021,134.8
+Queensland,1985,100.0
+Queensland,1986,186.9
+Queensland,1987,161.1
+Queensland,1988,249.4
+Queensland,1989,182.6
+Queensland,1990,157.0
+Queensland,1991,100.1
+Queensland,1992,96.3
+Queensland,1993,114.0
+Queensland,1994,97.1
+Queensland,1995,103.6
+Queensland,1996,99.1
+Queensland,1997,105.7
+Queensland,1998,103.7
+Queensland,1999,79.7
+Queensland,2000,82.0
+Queensland,2001,78.9
+Queensland,2002,77.3
+Queensland,2003,86.1
+Queensland,2004,86.0
+Queensland,2005,76.8
+Queensland,2006,71.9
+Queensland,2007,62.7
+Queensland,2008,67.7
+Queensland,2009,62.6
+Queensland,2010,65.1
+Queensland,2011,59.1
+Queensland,2012,61.5
+Queensland,2013,57.1
+Queensland,2014,54.1
+Queensland,2015,49.3
+Queensland,2016,50.6
+Queensland,2017,47.0
+Queensland,2018,48.9
+Queensland,2019,48.2
+Queensland,2020,46.8
+Queensland,2021,42.1
+South Australia,1985,100.0
+South Australia,1986,87.4
+South Australia,1987,98.0
+South Australia,1988,154.6
+South Australia,1989,127.6
+South Australia,1990,182.7
+South Australia,1991,155.4
+South Australia,1992,192.9
+South Australia,1993,126.7
+South Australia,1994,165.9
+South Australia,1995,135.5
+South Australia,1996,99.2
+South Australia,1997,101.7
+South Australia,1998,95.5
+South Australia,1999,85.5
+South Australia,2000,95.3
+South Australia,2001,88.0
+South Australia,2002,69.3
+South Australia,2003,65.6
+South Australia,2004,61.8
+South Australia,2005,65.4
+South Australia,2006,57.5
+South Australia,2007,51.3
+South Australia,2008,50.9
+South Australia,2009,51.6
+South Australia,2010,51.9
+South Australia,2011,45.3
+South Australia,2012,38.1
+South Australia,2013,38.6
+South Australia,2014,37.4
+South Australia,2015,40.0
+South Australia,2016,37.0
+South Australia,2017,35.1
+South Australia,2018,37.2
+South Australia,2019,35.3
+South Australia,2020,30.8
+South Australia,2021,31.7
+Tasmania,1985,100.0
+Tasmania,1986,71.1
+Tasmania,1987,106.6
+Tasmania,1988,99.5
+Tasmania,1989,96.6
+Tasmania,1990,139.9
+Tasmania,1991,127.2
+Tasmania,1992,124.3
+Tasmania,1993,131.5
+Tasmania,1994,131.8
+Tasmania,1995,125.2
+Tasmania,1996,137.1
+Tasmania,1997,127.8
+Tasmania,1998,147.5
+Tasmania,1999,121.2
+Tasmania,2000,120.7
+Tasmania,2001,115.8
+Tasmania,2002,109.8
+Tasmania,2003,89.4
+Tasmania,2004,98.9
+Tasmania,2005,87.7
+Tasmania,2006,98.0
+Tasmania,2007,90.7
+Tasmania,2008,78.8
+Tasmania,2009,71.9
+Tasmania,2010,77.7
+Tasmania,2011,68.5
+Tasmania,2012,70.5
+Tasmania,2013,72.2
+Tasmania,2014,64.6
+Tasmania,2015,65.4
+Tasmania,2016,68.5
+Tasmania,2017,70.2
+Tasmania,2018,64.6
+Tasmania,2019,65.8
+Tasmania,2020,64.5
+Tasmania,2021,62.0
+Victoria,1985,100.0
+Victoria,1986,101.9
+Victoria,1987,90.9
+Victoria,1988,85.5
+Victoria,1989,97.0
+Victoria,1990,85.2
+Victoria,1991,84.1
+Victoria,1992,104.5
+Victoria,1993,80.5
+Victoria,1994,85.5
+Victoria,1995,85.8
+Victoria,1996,75.7
+Victoria,1997,69.9
+Victoria,1998,68.7
+Victoria,1999,77.1
+Victoria,2000,76.2
+Victoria,2001,77.9
+Victoria,2002,65.4
+Victoria,2003,75.4
+Victoria,2004,74.5
+Victoria,2005,76.6
+Victoria,2006,74.7
+Victoria,2007,69.5
+Victoria,2008,67.5
+Victoria,2009,70.0
+Victoria,2010,69.7
+Victoria,2011,68.7
+Victoria,2012,63.7
+Victoria,2013,61.0
+Victoria,2014,62.0
+Victoria,2015,56.5
+Victoria,2016,62.1
+Victoria,2017,55.2
+Victoria,2018,60.7
+Victoria,2019,62.7
+Victoria,2020,64.3
+Victoria,2021,60.7
+Western Australia,1985,100.0
+Western Australia,1986,182.7
+Western Australia,1987,284.2
+Western Australia,1988,150.9
+Western Australia,1989,164.1
+Western Australia,1990,133.2
+Western Australia,1991,148.5
+Western Australia,1992,117.2
+Western Australia,1993,118.0
+Western Australia,1994,233.6
+Western Australia,1995,256.1
+Western Australia,1996,239.0
+Western Australia,1997,205.2
+Western Australia,1998,241.0
+Western Australia,1999,229.7
+Western Australia,2000,188.8
+Western Australia,2001,184.2
+Western Australia,2002,171.0
+Western Australia,2003,162.1
+Western Australia,2004,184.1
+Western Australia,2005,194.2
+Western Australia,2006,178.6
+Western Australia,2007,153.3
+Western Australia,2008,172.2
+Western Australia,2009,163.5
+Western Australia,2010,169.3
+Western Australia,2011,146.0
+Western Australia,2012,134.0
+Western Australia,2013,142.1
+Western Australia,2014,140.7
+Western Australia,2015,130.0
+Western Australia,2016,132.6
+Western Australia,2017,119.5
+Western Australia,2018,125.2
+Western Australia,2019,116.7
+Western Australia,2020,117.1
+Western Australia,2021,120.1

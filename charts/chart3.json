@@ -1,14 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 650,
-  "height": 630,
+  "width": "container",
+  "height": 470,
   "config": {
     "background": "#1a1e35",
     "font": "DM Sans",
-    "view": {"stroke": null}
+    "view": {"stroke": null},
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    }
   },
   "data": {
-    "url": "data/aus_states.json",
+    "url": "data/aus_states_clean.json",
     "format": {"type": "json", "property": "features"}
   },
   "transform": [
@@ -17,43 +25,22 @@
       "from": {
         "data": {"url": "data/epbc_by_state.csv"},
         "key": "state",
-        "fields": ["total", "endangered", "vulnerable", "critically_endangered", "extinct"]
+        "fields": ["state_abbr", "total", "critically_endangered", "endangered", "vulnerable", "extinct"]
       }
     }
   ],
-  "projection": {
-    "type": "mercator",
-    "center": [136.0, -26.5],
-    "scale": 800,
-    "translate": [352, 300]
-  },
-  "mark": {
-    "type": "geoshape",
-    "stroke": "#2a2d45",
-    "strokeWidth": 1
-  },
+  "projection": {"type": "mercator", "center": [134, -28], "scale": 620},
+  "mark": {"type": "geoshape", "stroke": "#0d0f1a", "strokeWidth": 1.2},
   "encoding": {
     "color": {
       "field": "total",
       "type": "quantitative",
       "title": "Threatened species",
-      "scale": {
-        "scheme": "reds",
-        "domain": [0, 800]
-      },
-      "legend": {
-        "orient": "bottom-right",
-        "titleColor": "#9a96a0",
-        "labelColor": "#9a96a0",
-        "titleFont": "DM Sans",
-        "labelFont": "DM Sans",
-        "titleFontSize": 11,
-        "labelFontSize": 10,
-        "gradientLength": 120
-      }
+      "scale": {"scheme": "yelloworangered", "domain": [0, 800]},
+      "legend": {"orient": "bottom-left", "gradientLength": 140, "direction": "horizontal"}
     },
     "tooltip": [
-      {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+      {"field": "properties.STATE_NAME", "type": "nominal", "title": "State / Territory"},
       {"field": "total", "type": "quantitative", "title": "Total threatened"},
       {"field": "critically_endangered", "type": "quantitative", "title": "Critically Endangered"},
       {"field": "endangered", "type": "quantitative", "title": "Endangered"},

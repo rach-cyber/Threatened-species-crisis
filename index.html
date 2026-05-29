@@ -205,6 +205,17 @@
 
     .chart-card:hover { border-color: rgba(255,255,255,0.15); }
 
+    /* Vega-Lite embeds: fill their card and never overflow horizontally */
+    .chart-card > div[id^="chart"] { width: 100%; }
+    .vega-embed { width: 100%; display: block; }
+    .vega-embed svg { max-width: 100%; height: auto; }
+    .vega-embed .vega-bindings {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
     .chart-card.full-width {
       grid-column: 1 / -1;
     }
@@ -375,9 +386,9 @@
     <h1 class="hero-title">Australia's <em>Silent</em> Extinction</h1>
     <p class="hero-intro">
       Australia is home to some of the most unique wildlife on Earth — found nowhere else.
-      Yet today, more than 2,000 species are threatened with extinction, and populations have
-      declined by an average of 73% since 1985. This is the story of a crisis unfolding quietly,
-      species by species, state by state.
+      Yet today, more than 2,000 species are threatened with extinction, and monitored
+      populations have fallen by more than half since 1985. This is the story of a crisis unfolding
+      quietly, species by species, state by state.
     </p>
 
     <div class="stat-grid">
@@ -386,8 +397,8 @@
         <div class="stat-label">species currently threatened under the EPBC Act</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number orange">73%</div>
-        <div class="stat-label">average population decline since 1985</div>
+        <div class="stat-number orange">56%</div>
+        <div class="stat-label">decline in monitored threatened populations since 1985</div>
       </div>
       <div class="stat-card">
         <div class="stat-number yellow">102</div>
@@ -418,13 +429,13 @@
       <div class="chart-card">
         <div class="chart-title">One in ten Australian mammals is already gone</div>
         <div class="chart-subtitle">Each square represents 1% of all known Australian mammal species · shaded = extinct</div>
-        <div class="chart-placeholder" id="chart1">Chart 1 — Waffle chart loading...</div>
+        <div id="chart1" style="min-height:300px;"></div>
         <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
       </div>
       <div class="chart-card">
         <div class="chart-title">Plants make up 3 in every 4 threatened species</div>
         <div class="chart-subtitle">Share of all 2,208 EPBC-listed species by taxonomic group</div>
-        <div class="chart-placeholder" id="chart2">Chart 2 — Donut chart loading...</div>
+        <div id="chart2" style="min-height:300px;"></div>
         <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
       </div>
     </div>
@@ -445,20 +456,20 @@
     <p class="section-intro">
       Threatened species are not spread evenly across Australia. Western Australia's unique
       and ancient flora makes it a global biodiversity hotspot — and a crisis zone.
-      Click any state to explore its threatened species breakdown.
+      Hover over any state to see its full threat breakdown.
     </p>
 
     <div class="chart-grid-3-2">
       <div class="chart-card">
         <div class="chart-title">Threatened species by state and territory</div>
-        <div class="chart-subtitle">Total EPBC-listed species occurring in each state · click to filter</div>
-        <div class="chart-placeholder" id="chart3" style="height:380px;">Chart 3 — Choropleth map loading...</div>
-        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026 · GeoJSON: rowanhogan/australian-states</p>
+        <div class="chart-subtitle">Choropleth map · darker = more threatened species · hover for the full breakdown</div>
+        <div id="chart3" style="min-height:470px;"></div>
+        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026 · Boundaries: rowanhogan/australian-states</p>
       </div>
       <div class="chart-card">
         <div class="chart-title">Threat severity varies by state</div>
-        <div class="chart-subtitle">Species count stacked by threat status · updates on map selection</div>
-        <div class="chart-placeholder" id="chart4" style="height:380px;">Chart 4 — Stacked bar loading...</div>
+        <div class="chart-subtitle">Species count stacked by threat status, per state and territory</div>
+        <div id="chart4" style="min-height:360px;"></div>
         <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
       </div>
     </div>
@@ -466,7 +477,7 @@
     <div class="chart-card" style="margin-top: 1.25rem;">
       <div class="chart-title">Which animals are most threatened — and where</div>
       <div class="chart-subtitle">Each cell shows the number of species in that taxa group threatened in that state · darker = more threatened</div>
-      <div class="chart-placeholder" id="chart5" style="height:280px;">Chart 5 — Heatmap loading...</div>
+      <div id="chart5" style="min-height:240px;"></div>
       <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
     </div>
   </div>
@@ -493,13 +504,13 @@
       <div class="chart-card">
         <div class="chart-title">Threatened species by taxonomic group</div>
         <div class="chart-subtitle">Rectangle size = number of species · colour = threat severity</div>
-        <div class="chart-placeholder" id="chart6">Chart 6 — Treemap loading...</div>
+        <div id="chart6" style="min-height:240px;"></div>
         <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
       </div>
       <div class="chart-card">
         <div class="chart-title">The species declining fastest</div>
         <div class="chart-subtitle">Top 15 threatened species by steepest population decline since 1985</div>
-        <div class="chart-placeholder" id="chart7">Chart 7 — Ranked bar loading...</div>
+        <div id="chart7" style="min-height:320px;"></div>
         <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
       </div>
       <div class="chart-card" style="margin-top: 1.25rem;">
@@ -524,15 +535,15 @@
     <p class="section-label">Is it getting worse?</p>
     <h2 class="section-title">Populations have been collapsing for four decades</h2>
     <p class="section-intro">
-      Since 1985, monitored populations of threatened birds, mammals and plants have declined
-      sharply and consistently. The 2017–2019 drought accelerated losses across the board.
-      There is no sign of recovery at a national scale.
+      Since 1985, monitored populations of threatened birds, mammals and — most steeply — plants
+      have fallen well below their baseline. The shaded band marks the severe 2017–2019 drought.
+      Recovery is rare, except where conservation is actively funded.
     </p>
 
     <div class="chart-card" style="margin-bottom: 1.25rem;">
-      <div class="chart-title">Threatened species populations have fallen 73% since 1985</div>
-      <div class="chart-subtitle">Population index for birds, mammals and plants (1985 = 100) · shaded band marks the 2017–2019 drought period</div>
-      <div class="chart-placeholder" id="chart8" style="height:360px;">Chart 8 — Annotated line chart loading...</div>
+      <div class="chart-title">Threatened populations have fallen well below their 1985 baseline</div>
+      <div class="chart-subtitle">Population index by group (1985 = 100) · the bold line is all species combined · shaded band marks the 2017–2019 drought</div>
+      <div id="chart8" style="min-height:340px;"></div>
       <p class="chart-source">Source: TERN Threatened Species Index 2024 (data to 2021)</p>
     </div>
 
@@ -540,14 +551,14 @@
       <div class="chart-card">
         <div class="chart-title">Conservation works — but only where it's funded</div>
         <div class="chart-subtitle">Population change at managed vs unmanaged sites · 1985 to 2021</div>
-        <div class="chart-placeholder" id="chart9">Chart 9 — Slope chart loading...</div>
+        <div id="chart9" style="min-height:320px;"></div>
         <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
       </div>
       <div class="chart-card">
-        <div class="chart-title">The threatened species list keeps growing</div>
-        <div class="chart-subtitle">Total EPBC listings 2000–2025 stacked by threat category</div>
-        <div class="chart-placeholder" id="chart10">Chart 10 — Stacked area loading...</div>
-        <p class="chart-source">Source: DCCEEW EPBC Act Threatened Species List, February 2026</p>
+        <div class="chart-title">Monitoring effort has surged since the 1990s</div>
+        <div class="chart-subtitle">Number of monitored populations tracked each year, by group — context for reading the trends</div>
+        <div id="chart10" style="min-height:280px;"></div>
+        <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
       </div>
     </div>
 
@@ -580,13 +591,13 @@
       <div class="chart-card">
         <div class="chart-title">Where threatened species are being monitored</div>
         <div class="chart-subtitle">Each dot = one monitoring site · colour = taxonomic group · remote regions have almost no coverage</div>
-        <div class="chart-placeholder" id="chart11" style="height:380px;">Chart 11 — Symbol map loading...</div>
+        <div id="chart11" style="min-height:440px;"></div>
         <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
       </div>
       <div class="chart-card">
         <div class="chart-title">Population trends differ dramatically by state</div>
         <div class="chart-subtitle">Average population index per state · 1985–2021 · same scale for comparison</div>
-        <div class="chart-placeholder" id="chart12" style="height:380px;">Chart 12 — Small multiples loading...</div>
+        <div id="chart12" style="min-height:360px;"></div>
         <p class="chart-source">Source: TERN Threatened Species Index 2024</p>
       </div>
     </div>
@@ -630,6 +641,9 @@
           </a><br><br>
           AI tools used: Claude (Anthropic) for code assistance, data cleaning guidance,
           and grammar checking. All visualisations and analysis are original work.
+          <br><br>
+          Method: population indices are computed from the TERN TSX raw monitoring data using
+          the Living Planet Index method (geometric mean of annual rates of change, 1985 = 100).
         </p>
       </div>
     </div>
@@ -642,13 +656,11 @@
 </footer>
 
 <script>
-  vegaEmbed('#chart2', 'charts/chart2.json', { actions: false, renderer: 'svg' }).catch(console.error);
-  vegaEmbed('#chart3', 'charts/chart3.json', { actions: false, renderer: 'svg' }).catch(console.error);
-  vegaEmbed('#chart4', 'charts/chart4.json', { actions: false, renderer: 'svg' }).catch(console.error);
-  vegaEmbed('#chart5', 'charts/chart5.json', { actions: false, renderer: 'svg' }).catch(console.error);
-  vegaEmbed('#chart6', 'charts/chart6.json', { actions: false, renderer: 'svg' }).catch(console.error);
-  vegaEmbed('#chart6b', 'charts/chart6b.json', { actions: false, renderer: 'svg' }).catch(console.error);
-  vegaEmbed('#chart7', 'charts/chart7.json', { actions: false, renderer: 'svg' }).catch(console.error);
+  const charts = ['chart1','chart2','chart3','chart4','chart5','chart6','chart6b','chart7','chart8','chart9','chart10','chart11','chart12'];
+  charts.forEach(function (id) {
+    vegaEmbed('#' + id, 'charts/' + id + '.json', { actions: false, renderer: 'svg' })
+      .catch(function (err) { console.error(id, err); });
+  });
 </script>
 
 

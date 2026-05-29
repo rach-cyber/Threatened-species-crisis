@@ -1,0 +1,223 @@
+group,year,index
+All species,1985,100.0
+All species,1986,94.0
+All species,1987,102.8
+All species,1988,94.9
+All species,1989,97.3
+All species,1990,102.4
+All species,1991,99.9
+All species,1992,112.0
+All species,1993,104.0
+All species,1994,104.8
+All species,1995,106.8
+All species,1996,99.5
+All species,1997,96.6
+All species,1998,98.7
+All species,1999,87.1
+All species,2000,86.7
+All species,2001,85.7
+All species,2002,74.7
+All species,2003,75.9
+All species,2004,77.1
+All species,2005,72.7
+All species,2006,63.1
+All species,2007,58.1
+All species,2008,58.4
+All species,2009,57.0
+All species,2010,57.4
+All species,2011,53.8
+All species,2012,51.0
+All species,2013,50.8
+All species,2014,49.2
+All species,2015,48.1
+All species,2016,48.8
+All species,2017,44.7
+All species,2018,45.6
+All species,2019,45.6
+All species,2020,45.4
+All species,2021,44.0
+Amphibians,1985,100.0
+Amphibians,1986,100.0
+Amphibians,1987,19.7
+Amphibians,1988,31.3
+Amphibians,1989,22.9
+Amphibians,1990,12.5
+Amphibians,1991,8.2
+Amphibians,1992,9.6
+Amphibians,1993,11.9
+Amphibians,1994,7.6
+Amphibians,1995,6.4
+Amphibians,1996,4.9
+Amphibians,1997,4.1
+Amphibians,1998,3.9
+Amphibians,1999,6.6
+Amphibians,2000,7.2
+Amphibians,2001,3.2
+Amphibians,2002,4.5
+Amphibians,2003,3.5
+Amphibians,2004,5.6
+Amphibians,2005,6.6
+Amphibians,2006,7.3
+Amphibians,2007,4.2
+Amphibians,2008,8.3
+Amphibians,2009,7.0
+Amphibians,2010,9.1
+Amphibians,2011,10.5
+Amphibians,2012,6.5
+Amphibians,2013,4.2
+Amphibians,2014,5.8
+Amphibians,2015,6.8
+Amphibians,2016,9.8
+Amphibians,2017,8.8
+Amphibians,2018,8.8
+Amphibians,2019,8.7
+Amphibians,2020,13.5
+Amphibians,2021,12.5
+Birds,1985,100.0
+Birds,1986,105.0
+Birds,1987,108.7
+Birds,1988,98.7
+Birds,1989,108.8
+Birds,1990,99.8
+Birds,1991,101.6
+Birds,1992,134.7
+Birds,1993,112.9
+Birds,1994,119.9
+Birds,1995,125.7
+Birds,1996,115.4
+Birds,1997,112.0
+Birds,1998,113.9
+Birds,1999,98.6
+Birds,2000,98.3
+Birds,2001,98.2
+Birds,2002,84.0
+Birds,2003,87.6
+Birds,2004,88.4
+Birds,2005,83.2
+Birds,2006,71.6
+Birds,2007,66.4
+Birds,2008,66.6
+Birds,2009,64.7
+Birds,2010,64.9
+Birds,2011,59.6
+Birds,2012,57.0
+Birds,2013,56.5
+Birds,2014,55.3
+Birds,2015,53.0
+Birds,2016,53.6
+Birds,2017,49.7
+Birds,2018,50.8
+Birds,2019,50.8
+Birds,2020,50.8
+Birds,2021,49.2
+Mammals,1985,100.0
+Mammals,1986,70.7
+Mammals,1987,107.9
+Mammals,1988,100.9
+Mammals,1989,88.0
+Mammals,1990,131.5
+Mammals,1991,122.3
+Mammals,1992,108.1
+Mammals,1993,127.1
+Mammals,1994,125.4
+Mammals,1995,119.4
+Mammals,1996,131.0
+Mammals,1997,138.0
+Mammals,1998,145.0
+Mammals,1999,123.3
+Mammals,2000,119.1
+Mammals,2001,115.7
+Mammals,2002,111.5
+Mammals,2003,88.0
+Mammals,2004,85.8
+Mammals,2005,68.4
+Mammals,2006,72.0
+Mammals,2007,67.5
+Mammals,2008,61.0
+Mammals,2009,65.6
+Mammals,2010,63.1
+Mammals,2011,71.9
+Mammals,2012,72.0
+Mammals,2013,80.8
+Mammals,2014,69.4
+Mammals,2015,71.4
+Mammals,2016,68.5
+Mammals,2017,61.4
+Mammals,2018,63.1
+Mammals,2019,62.1
+Mammals,2020,52.2
+Mammals,2021,45.0
+Plants,1985,100.0
+Plants,1986,100.0
+Plants,1987,100.0
+Plants,1988,100.0
+Plants,1989,100.0
+Plants,1990,100.0
+Plants,1991,100.0
+Plants,1992,100.0
+Plants,1993,41.0
+Plants,1994,41.0
+Plants,1995,41.0
+Plants,1996,20.4
+Plants,1997,20.4
+Plants,1998,32.6
+Plants,1999,22.8
+Plants,2000,27.4
+Plants,2001,24.2
+Plants,2002,22.7
+Plants,2003,30.2
+Plants,2004,27.8
+Plants,2005,42.1
+Plants,2006,21.0
+Plants,2007,21.9
+Plants,2008,18.3
+Plants,2009,18.8
+Plants,2010,19.9
+Plants,2011,22.2
+Plants,2012,20.2
+Plants,2013,22.9
+Plants,2014,23.0
+Plants,2015,23.6
+Plants,2016,23.5
+Plants,2017,18.2
+Plants,2018,18.0
+Plants,2019,17.2
+Plants,2020,14.3
+Plants,2021,22.0
+Reptiles,1985,100.0
+Reptiles,1986,159.3
+Reptiles,1987,144.1
+Reptiles,1988,103.7
+Reptiles,1989,110.7
+Reptiles,1990,119.1
+Reptiles,1991,128.0
+Reptiles,1992,120.0
+Reptiles,1993,114.6
+Reptiles,1994,109.7
+Reptiles,1995,119.8
+Reptiles,1996,137.4
+Reptiles,1997,88.3
+Reptiles,1998,106.1
+Reptiles,1999,110.4
+Reptiles,2000,87.3
+Reptiles,2001,139.3
+Reptiles,2002,144.2
+Reptiles,2003,136.9
+Reptiles,2004,157.3
+Reptiles,2005,125.3
+Reptiles,2006,119.7
+Reptiles,2007,102.8
+Reptiles,2008,105.9
+Reptiles,2009,103.7
+Reptiles,2010,107.6
+Reptiles,2011,97.1
+Reptiles,2012,101.9
+Reptiles,2013,118.7
+Reptiles,2014,146.8
+Reptiles,2015,142.7
+Reptiles,2016,178.4
+Reptiles,2017,116.9
+Reptiles,2018,113.9
+Reptiles,2019,161.3
+Reptiles,2020,116.6
+Reptiles,2021,95.4

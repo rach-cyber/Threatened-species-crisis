@@ -1,0 +1,91 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 320,
+  "config": {
+    "background": "#1a1e35",
+    "font": "DM Sans",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "domainColor": "rgba(255,255,255,0.1)",
+      "tickColor": "rgba(255,255,255,0.1)",
+      "gridColor": "rgba(255,255,255,0.04)"
+    },
+    "legend": {
+      "labelColor": "#9a96a0",
+      "titleColor": "#9a96a0",
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelFontSize": 11,
+      "titleFontSize": 11
+    }
+  },
+  "data": {"url": "data/tsx_index_group.csv"},
+  "layer": [
+    {
+      "data": {"values": [{"x0": 2017, "x1": 2019}]},
+      "mark": {"type": "rect", "fill": "#f4a261", "opacity": 0.08},
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [1985, 2021], "zero": false}},
+        "x2": {"field": "x1"}
+      }
+    },
+    {
+      "data": {"values": [{"y": 100}]},
+      "mark": {"type": "rule", "stroke": "#5a5870", "strokeDash": [4, 4]},
+      "encoding": {"y": {"field": "y", "type": "quantitative"}}
+    },
+    {
+      "data": {"values": [{"x": 2018, "y": 158, "t": "2017–2019 drought"}]},
+      "mark": {"type": "text", "color": "#f4a261", "fontSize": 10, "fontStyle": "italic"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [1985, 2021], "zero": false}},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "t"}
+      }
+    },
+    {
+      "mark": {"type": "line", "interpolate": "monotone", "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {"domain": [1985, 2021], "zero": false},
+          "axis": {"format": "d", "tickCount": 8}
+        },
+        "y": {
+          "field": "index",
+          "type": "quantitative",
+          "title": "Population index (1985 = 100)",
+          "scale": {"domain": [0, 170]}
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": "Group",
+          "scale": {
+            "domain": ["All species", "Birds", "Mammals", "Plants", "Amphibians", "Reptiles"],
+            "range": ["#f0ece4", "#e9c46a", "#f4a261", "#2a9d8f", "#a8dadc", "#457b9d"]
+          },
+          "legend": {"orient": "top", "direction": "horizontal"}
+        },
+        "strokeWidth": {
+          "condition": {"test": "datum.group == 'All species'", "value": 3.5},
+          "value": 1.8
+        },
+        "tooltip": [
+          {"field": "group", "type": "nominal", "title": "Group"},
+          {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
+          {"field": "index", "type": "quantitative", "title": "Index (1985=100)", "format": ".0f"}
+        ]
+      }
+    }
+  ]
+}

@@ -27,6 +27,7 @@
     }
   },
   "data": {"url": "data/tsx_index_group.csv"},
+  "resolve": {"scale": {"color": "independent"}},
   "layer": [
     {
       "data": {"values": [{"x0": 2017, "x1": 2019}]},
@@ -42,8 +43,13 @@
       "encoding": {"y": {"field": "y", "type": "quantitative"}}
     },
     {
-      "data": {"values": [{"x": 2018, "y": 158, "t": "2017–2019 drought"}]},
-      "mark": {"type": "text", "color": "#f4a261", "fontSize": 10, "fontStyle": "italic"},
+      "data": {"values": [
+        {"x": 2018, "y": 159, "t": "2017–2019 drought"},
+        {"x": 1991, "y": 108, "t": "1985 baseline"},
+        {"x": 2004, "y": 150, "t": "All species: −56% by 2021"},
+        {"x": 2015, "y": 20, "t": "Plants −78%"}
+      ]},
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": "bold", "color": "#e8e2d6"},
       "encoding": {
         "x": {"field": "x", "type": "quantitative", "scale": {"domain": [1985, 2021], "zero": false}},
         "y": {"field": "y", "type": "quantitative"},

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 380,
+  "height": 520,
   "config": {
     "background": "#1a1e35",
     "font": "DM Sans",
@@ -43,7 +43,7 @@
     {"filter": "datum.taxa == taxaFilter"},
     {"filter": "datum.state_count > 0"},
     {
-      "window": [{"op": "rank", "as": "rank"}],
+      "window": [{"op": "row_number", "as": "rank"}],
       "sort": [{"field": "state_count", "order": "descending"}]
     },
     {"filter": "datum.rank <= 20"}
@@ -58,7 +58,7 @@
       "type": "nominal",
       "title": null,
       "sort": {"field": "state_count", "order": "descending"},
-      "axis": {"labelLimit": 200}
+      "axis": {"labelLimit": 340}
     },
     "x": {
       "field": "state_count",

@@ -27,36 +27,42 @@
     }
   },
   "data": {"url": "data/tsx_monitoring_effort.csv"},
-  "mark": {"type": "area", "interpolate": "linear", "line": false},
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "quantitative",
-      "title": null,
-      "scale": {"domain": [1985, 2021], "zero": false},
-      "axis": {"format": "d", "tickCount": 8}
-    },
-    "y": {
-      "field": "populations",
-      "type": "quantitative",
-      "title": "Monitored populations",
-      "stack": "zero"
-    },
-    "color": {
-      "field": "group",
-      "type": "nominal",
-      "title": "Group",
-      "scale": {
-        "domain": ["Birds", "Mammals", "Plants", "Amphibians", "Reptiles"],
-        "range": ["#e9c46a", "#f4a261", "#2a9d8f", "#a8dadc", "#457b9d"]
-      },
-      "legend": {"orient": "top", "direction": "horizontal"}
-    },
-    "order": {"field": "populations", "type": "quantitative", "sort": "descending"},
-    "tooltip": [
-      {"field": "group", "type": "nominal", "title": "Group"},
-      {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
-      {"field": "populations", "type": "quantitative", "title": "Monitored populations"}
-    ]
-  }
+  "resolve": {"scale": {"color": "independent"}},
+  "layer": [
+    {
+      "mark": {"type": "area", "interpolate": "linear", "line": false},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {"domain": [1985, 2021], "zero": false},
+          "axis": {"format": "d", "tickCount": 8}
+        },
+        "y": {
+          "field": "populations",
+          "type": "quantitative",
+          "title": "Monitored populations",
+          "stack": "zero",
+          "scale": {"domain": [0, 8800]}
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": "Group",
+          "scale": {
+            "domain": ["Birds", "Mammals", "Plants", "Amphibians", "Reptiles"],
+            "range": ["#e9c46a", "#f4a261", "#2a9d8f", "#a8dadc", "#457b9d"]
+          },
+          "legend": {"orient": "top", "direction": "horizontal"}
+        },
+        "order": {"field": "populations", "type": "quantitative", "sort": "descending"},
+        "tooltip": [
+          {"field": "group", "type": "nominal", "title": "Group"},
+          {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
+          {"field": "populations", "type": "quantitative", "title": "Monitored populations"}
+        ]
+      }
+    }
+  ]
 }

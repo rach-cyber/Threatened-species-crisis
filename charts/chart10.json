@@ -27,6 +27,9 @@
     }
   },
   "data": {"url": "data/tsx_monitoring_effort.csv"},
+  "transform": [
+    {"calculate": "indexof(['Birds','Mammals','Plants','Amphibians','Reptiles'], datum.group)", "as": "orderkey"}
+  ],
   "resolve": {"scale": {"color": "independent"}},
   "layer": [
     {
@@ -43,8 +46,7 @@
           "field": "populations",
           "type": "quantitative",
           "title": "Monitored populations",
-          "stack": "zero",
-          "scale": {"domain": [0, 8800]}
+          "stack": "zero"
         },
         "color": {
           "field": "group",
@@ -56,7 +58,7 @@
           },
           "legend": {"orient": "top", "direction": "horizontal"}
         },
-        "order": {"field": "populations", "type": "quantitative", "sort": "descending"},
+        "order": {"field": "orderkey", "type": "quantitative"},
         "tooltip": [
           {"field": "group", "type": "nominal", "title": "Group"},
           {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 220,
+  "width": {"step": 82},
+  "height": {"step": 30},
   "config": {
     "background": "#1a1e35",
     "font": "DM Sans",
@@ -27,7 +27,6 @@
     }
   },
   "data": {"url": "data/epbc_heatmap.csv"},
-  "mark": {"type": "rect", "cornerRadius": 2},
   "encoding": {
     "x": {
       "field": "state",
@@ -41,25 +40,35 @@
       "type": "nominal",
       "title": null,
       "sort": ["Plants", "Birds", "Mammals", "Invertebrates", "Reptiles", "Fish", "Frogs"]
-    },
-    "color": {
-      "field": "count",
-      "type": "quantitative",
-      "title": "Species count",
-      "scale": {
-        "type": "log",
-        "scheme": "reds",
-        "domain": [1, 500]
-      },
-      "legend": {
-        "orient": "right",
-        "gradientLength": 120
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "cornerRadius": 2},
+      "encoding": {
+        "color": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Species count",
+          "scale": {"type": "log", "scheme": "reds", "domain": [1, 500]},
+          "legend": {"orient": "right", "gradientLength": 120}
+        },
+        "tooltip": [
+          {"field": "taxa", "type": "nominal", "title": "Taxa group"},
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "count", "type": "quantitative", "title": "Threatened species"}
+        ]
       }
     },
-    "tooltip": [
-      {"field": "taxa", "type": "nominal", "title": "Taxa group"},
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "count", "type": "quantitative", "title": "Threatened species"}
-    ]
-  }
+    {
+      "mark": {"type": "text", "fontSize": 9, "baseline": "middle"},
+      "encoding": {
+        "text": {"field": "count", "type": "quantitative"},
+        "color": {
+          "condition": {"test": "datum.count > 70", "value": "#fff5e6"},
+          "value": "#5a0a0a"
+        }
+      }
+    }
+  ]
 }
